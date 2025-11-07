@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #1c1c1e url('loadscreen.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f2f2f7; /* Light text color */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.backdrop {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px); /* Blur effect for the backdrop */
+    z-index: 1000; /* Ensure it is above other content */
+    overflow: hidden; /* Prevent overflow */
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
+}
+
+.loading-container {
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    transform: skew(-5deg);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffae00;
+}
+
+.title h1 {
+    font-size: 48px;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.title h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #d1d1d6; /* Slightly lighter for subtitle */
+}
+
+.loading-bar {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    height: 20px;
+    margin-top: 20px;
+    transform: skew(-5deg);
+    animation: loading 2s normal; /* Animation for loading bar */
+}
+
+.progress {
+    height: 100%;
+    background-color: #ffae00;
+    width: 0; /* Start at 0% */
+    transition: width 0.3s ease;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+    color: #e5e5ea; /* Light gray for messages */
+}

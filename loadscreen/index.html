@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="backdrop">
+            <div class="loading-container">
+                <!-- Spinner entfernt -->
+                <div class="title">
+                    <h1>Loading...</h1>
+                </div>
+                <div class="loading-bar">
+                    <div class="progress"></div>
+                </div>
+                <p class="message">Cold Roleplay wird für dich Startklar gemacht!</p>
+            </div>
+        </div>
+<script type="text/javascript">
+var count = 0;
+var thisCount = 0;
+
+const handlers = {
+    startInitFunctionOrder(data) {
+        count = data.count;
+        thisCount = 0;
+        updateProgress(0);
+    },
+    initFunctionInvoking(data) {
+        updateProgress((data.idx / count) * 100);
+    },
+    startDataFileEntries(data) {
+        count = data.count;
+        thisCount = 0;
+        updateProgress(0);
+    },
+    performMapLoadFunction(data) {
+        ++thisCount;
+        updateProgress((thisCount / count) * 100);
+    },
+    onLogLine(data) {
+        document.querySelector('.message').innerHTML = data.message + "..!";
+    }
+};
+
+function updateProgress(percent) {
+    document.querySelector('.progress').style.width = percent + '%';
+}
+
+window.addEventListener('message', function(e) {
+    (handlers[e.data.eventName] || function() {})(e.data);
+});
+</script>
+    </body>
+</html>
